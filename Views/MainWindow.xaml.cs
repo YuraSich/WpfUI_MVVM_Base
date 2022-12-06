@@ -24,5 +24,13 @@ namespace WpfUI
         {
             InitializeComponent();
         }
+
+        private void DrugOver(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
+        }
     }
 }
