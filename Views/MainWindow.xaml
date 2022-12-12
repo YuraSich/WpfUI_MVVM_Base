@@ -12,21 +12,47 @@
         AllowsTransparency="True"
         Background="Transparent">
     <Window.Resources>
-        <Style TargetType="Button">
+
+        <Style x:Key="EscapeButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="#E7EAEF"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="FontSize" Value="18"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border Background="{TemplateBinding Background}" BorderBrush="Black" BorderThickness="0">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <Border x:Name="border"
+                                Background="Transparent" 
+                                BorderThickness="0" 
+                                SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" 
+                                              Focusable="False" 
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                              Margin="{TemplateBinding Padding}" 
+                                              RecognizesAccessKey="True" 
+                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                                <ContentPresenter.Content>
+                                    <TextBlock x:Name="text"
+                                               Text="{TemplateBinding Content}"/>
+                                </ContentPresenter.Content>
+                            </ContentPresenter>
                         </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="FontWeight" TargetName="text" Value="Bold"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="FontWeight" TargetName="text" Value="Bold"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-            <Style.Triggers>
-                <Trigger Property="IsPressed" Value="True">
-                    <Setter Property="FontSize" Value="32"/>
-                </Trigger>
-            </Style.Triggers>
         </Style>
     </Window.Resources>
     <Border CornerRadius="15" Background="#8B9D77">
@@ -47,11 +73,8 @@
             </Grid.ColumnDefinitions>
 
             <Border Grid.ColumnSpan="4" Background="#37745B" CornerRadius="15 15 0 0" MouseDown="DrugOver">
-                <Button Content="❌"
+                <Button Style="{DynamicResource EscapeButtonStyle}" Content="❌"
                         Margin="7 0"
-                        FontSize="16"
-                        Foreground="#E7EAEF" 
-                        Height="30" Width="30" 
                         HorizontalAlignment="Right"
                         VerticalAlignment="Center">
                 </Button>
