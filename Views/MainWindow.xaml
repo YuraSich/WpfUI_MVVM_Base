@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfUI"
+        xmlns:vm="clr-namespace:WpfUI.ViewModels"
         mc:Ignorable="d"
         Height="550" Width="420"
         ResizeMode="NoResize"
@@ -11,49 +12,12 @@
         WindowStyle="None"
         AllowsTransparency="True"
         Background="Transparent">
+    <Window.DataContext>
+        <vm:MainWindowViewModel/>
+    </Window.DataContext>
     <Window.Resources>
 
-        <Style x:Key="EscapeButtonStyle" TargetType="{x:Type Button}">
-            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="Foreground" Value="#E7EAEF"/>
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="Padding" Value="1"/>
-            <Setter Property="FontSize" Value="18"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border x:Name="border"
-                                Background="Transparent" 
-                                BorderThickness="0" 
-                                SnapsToDevicePixels="true">
-                            <ContentPresenter x:Name="contentPresenter" 
-                                              Focusable="False" 
-                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
-                                              Margin="{TemplateBinding Padding}" 
-                                              RecognizesAccessKey="True" 
-                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
-                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
-                                <ContentPresenter.Content>
-                                    <TextBlock x:Name="text"
-                                               Text="{TemplateBinding Content}"/>
-                                </ContentPresenter.Content>
-                            </ContentPresenter>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="true">
-                                <Setter Property="FontWeight" TargetName="text" Value="Bold"/>
-                            </Trigger>
-                            <Trigger Property="IsPressed" Value="true">
-                                <Setter Property="FontWeight" TargetName="text" Value="Bold"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
+        
     </Window.Resources>
     <Border CornerRadius="15" Background="#8B9D77">
         <Grid>
@@ -73,10 +37,12 @@
             </Grid.ColumnDefinitions>
 
             <Border Grid.ColumnSpan="4" Background="#37745B" CornerRadius="15 15 0 0" MouseDown="DrugOver">
-                <Button Style="{DynamicResource EscapeButtonStyle}" Content="❌"
+                <Button Style="{StaticResource EscapeButtonStyle}" 
+                        Content="❌"
                         Margin="7 0"
                         HorizontalAlignment="Right"
-                        VerticalAlignment="Center">
+                        VerticalAlignment="Center"
+                        Command="{Binding CloseAppCommand}">
                 </Button>
             </Border>
 
