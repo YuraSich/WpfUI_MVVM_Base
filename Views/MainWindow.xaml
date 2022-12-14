@@ -15,26 +15,13 @@
     <Window.DataContext>
         <vm:MainWindowViewModel/>
     </Window.DataContext>
-    <Window.Resources>
-
-        
-    </Window.Resources>
     <Border CornerRadius="15" Background="#8B9D77">
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="0.3*"/>
-                <RowDefinition Height="1.5*"/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
+                <RowDefinition Height="25"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
+
 
             <Border Grid.ColumnSpan="4" Background="#37745B" CornerRadius="15 15 0 0" MouseDown="DrugOver">
                 <Button Style="{StaticResource EscapeButtonStyle}" 
@@ -45,6 +32,61 @@
                         Command="{Binding CloseAppCommand}">
                 </Button>
             </Border>
+
+            <Grid Grid.Row="1" Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.3*"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Border Background="Black" CornerRadius="15 15 0 0">
+                    <TextBlock Text="3 + 8" 
+                               Foreground="White" 
+                               VerticalAlignment="Center" 
+                               HorizontalAlignment="Right"
+                               FontSize="48"
+                               FontWeight="Bold"
+                               Margin="25 0"/>
+                </Border>
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button Style="{DynamicResource CalcButtonStyle}" Background="OrangeRed" FontSize="28" Grid.Row="0" Grid.Column="0" Content="C"/>
+                    <Button Style="{DynamicResource CalcButtonStyle}" Background="Coral" FontSize="28" Grid.Row="0" Grid.Column="1" Content="("/>
+                    <Button Style="{DynamicResource CalcButtonStyle}" Background="Coral" FontSize="28" Grid.Row="0" Grid.Column="2" Content=")"/>
+                    <Button Style="{DynamicResource CalcButtonStyle}" Background="Coral" FontSize="28" Grid.Row="0" Grid.Column="3" Content="/"/>
+                    
+                    <Button Style="{DynamicResource CalcButtonStyle}" Grid.Row="1" FontSize="32" Grid.Column="0" Content="1"/>
+                    <Button Style="{DynamicResource CalcButtonStyle}" Grid.Row="1" FontSize="32" Grid.Column="1" Content="2"/>
+                    <Button Style="{DynamicResource CalcButtonStyle}" Grid.Row="1" FontSize="32" Grid.Column="2" Content="3"/>
+                    <Button Style="{DynamicResource CalcButtonStyle}" Background="Coral" FontSize="28" Grid.Row="1" Grid.Column="3" Content="*"/>
+
+                    <Button Style="{DynamicResource CalcButtonStyle}" Grid.Row="2" FontSize="32" Grid.Column="0" Content="4"/>
+                    <Button Style="{DynamicResource CalcButtonStyle}" Grid.Row="2" FontSize="32" Grid.Column="1" Content="5"/>
+                    <Button Style="{DynamicResource CalcButtonStyle}" Grid.Row="2" FontSize="32" Grid.Column="2" Content="6"/>
+                    <Button Style="{DynamicResource CalcButtonStyle}" Background="Coral" FontSize="28" Grid.Row="2" Grid.Column="3" Content="-"/>
+
+                    <Button Style="{DynamicResource CalcButtonStyle}" Grid.Row="3" FontSize="32" Grid.Column="0" Content="7"/>
+                    <Button Style="{DynamicResource CalcButtonStyle}" Grid.Row="3" FontSize="32" Grid.Column="1" Content="8"/>
+                    <Button Style="{DynamicResource CalcButtonStyle}" Grid.Row="3" FontSize="32" Grid.Column="2" Content="9"/>
+                    <Button Style="{DynamicResource CalcButtonStyle}" Background="Coral" FontSize="28" Grid.Row="3" Grid.Column="3" Content="+"/>
+
+                    <Button Style="{DynamicResource CalcButtonStyle}" Background="Coral" FontSize="28" Grid.Row="4" Grid.Column="0" Content="+/-"/>
+                    <Button Style="{DynamicResource CalcButtonStyle}" Grid.Row="4" FontSize="32" Grid.Column="1" Content="0"/>
+                    <Button Style="{DynamicResource CalcButtonStyle}" Background="Coral" FontSize="28" Grid.Row="4" Grid.Column="2" Content=","/>
+                    <Button Style="{DynamicResource CalcButtonStyle}" Background="Coral" FontSize="36" Grid.Row="4" Grid.Column="3" Content="="/>
+                </Grid>
+            </Grid>
 
 
 
